@@ -16,7 +16,7 @@ interface User {
 }
 
 interface UserState {
-  user: User | null; // تم تغيير User[] إلى User | null
+  user: User | null;
   loading: 'idle' | 'pending' | 'succeeded' | 'failed';
   error: string | null;
 }

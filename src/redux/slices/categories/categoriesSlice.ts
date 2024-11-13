@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCategories } from "./category.AsyncThunk"; // تأكد من المسار الصحيح
+import { getCategories } from "./categories.AsyncThunk"; // تأكد من المسار الصحيح
 
 interface Category {
     name: string;

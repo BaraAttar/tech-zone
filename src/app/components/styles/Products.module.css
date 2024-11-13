@@ -1,0 +1,83 @@
+.productsContainer {
+  position: relative;
+}
+
+.productsList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: start;
+  gap: 20px;
+  max-width: 100%;
+  margin: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .productsList {
+    /* width: 1010px; */
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .productsList {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .productsList {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .productsList {
+    width: 220px;
+  }
+}
+
+.product {
+  background-color: var(--card-color);
+  width: 220px;
+  height: 280px;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative; /* لتحديد السياق للتحويم */
+  overflow: hidden; /* لإخفاء الأجزاء المتجاوزة */
+}
+
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.product:hover .image {
+  transform: scale(1.2);
+}
+
+.productName {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 14px;
+  overflow: hidden;
+  word-break: break-all;
+  height: 16.5px;
+  cursor: pointer;
+}
+
+.price {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: normal;
+}

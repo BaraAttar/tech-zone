@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/store";
 import styles from "./styles/Categories.module.css";
 import { useEffect } from "react";
-import { getCategories } from "@/redux/slices/category/category.AsyncThunk";
+import { getCategories } from "@/redux/slices/categories/categories.AsyncThunk";
 import { Toaster, toast } from 'sonner'
 
 export default function Categories() {
@@ -19,7 +19,7 @@ export default function Categories() {
     return (
         <div className={styles.categories}>
             <Toaster position="top-center" />
-            <h3 className={styles.browesByCategory}>Browse By Category</h3>
+            <h1>Browse By Category</h1>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             <div className={styles.categoriesList}>

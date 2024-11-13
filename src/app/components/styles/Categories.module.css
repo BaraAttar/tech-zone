@@ -1,11 +1,5 @@
 .categories {
-  width: 95%;
-  margin: auto;
   position: relative;
-}
-
-.browesByCategory {
-  font-weight: 600;
 }
 
 .categoriesList {
@@ -15,8 +9,8 @@
   white-space: nowrap;
   padding-bottom: 10px;
   scroll-behavior: smooth;
-  margin-bottom: 100px;
   scrollbar-width: none;
+  margin-bottom: 100px;
   scroll-snap-type: x mandatory;
 }
 
