@@ -1,0 +1,132 @@
+.navbar {
+  height: 55px;
+  background-color: var(--card-color);
+  box-shadow: rgba(0, 0, 0, 0.075) 0px -2px 6px;
+  border-bottom: 1px solid var(--gray-border);
+  position: sticky;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 24px;
+  /* display: flex;
+  align-items: center; */
+}
+
+.navbarContent {
+  margin: auto;
+  height: 55px;
+  width: 1180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  margin: 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.coreNavigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.coreNavigation > a {
+  text-decoration: none;
+}
+
+.searchInputWrap {
+  background-color: #f9f9f9;
+  border: 1px solid #e8e8e8;
+  border-radius: 50px;
+  display: flex;
+  height: 32px;
+  width: 400px;
+  box-sizing: border-box;
+}
+
+.searchIcon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 36px;
+}
+
+.searchForm {
+  flex: 1;
+  margin-right: 10px;
+  position: relative;
+  text-align: start;
+  z-index: 1;
+}
+
+.searchInput {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: #191919;
+  font-size: 15px;
+  font-weight: 600;
+  height: 100%;
+  margin-top: -1px;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 200;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.loggedOutOptions {
+  display: flex;
+  gap: 10px;
+}
+
+.loggedOutOptions > a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--gray-border);
+}
+
+.login {
+  background-color: rgba(245, 248, 255);
+  color: rgb(7 88 255);
+}
+
+.signup {
+  background-color: rgb(7 88 255);
+  color: #fff;
+}
+
+.isAuthenticatedOptions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.cart {
+  cursor: pointer;
+}
+
+.logout {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--gray-border);
+  background-color: rgb(255, 245, 245);
+  color: rgb(255, 7, 7);
+  cursor: pointer;
+  margin-left: 20px;
+}

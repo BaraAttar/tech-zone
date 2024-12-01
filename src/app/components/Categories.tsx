@@ -4,6 +4,9 @@ import styles from "./styles/Categories.module.css";
 import { useEffect } from "react";
 import { getCategories } from "@/redux/slices/categories/categories.AsyncThunk";
 import { Toaster, toast } from 'sonner'
+import Image from "next/image";
+
+const img = "https://res.cloudinary.com/dkvauszbh/image/upload/v1732022445/mobile-app_sktsxu.png"
 
 export default function Categories() {
     const dispatch = useDispatch<AppDispatch>();
@@ -14,7 +17,7 @@ export default function Categories() {
         if (error) {
             toast.error(error)
         }
-    }, [dispatch , error]);
+    }, [dispatch, error]);
 
     return (
         <div className={styles.categories}>
@@ -25,7 +28,12 @@ export default function Categories() {
             <div className={styles.categoriesList}>
                 {categories?.map((category) => (
                     <div key={category.name} className={styles.categoryCard}>
-                        {category.name}
+                        <div className={styles.imageContainer}>
+                            <Image alt="image" src={img} width={100} height={100} />
+                        </div>
+                        <p>
+                            {category.name}
+                        </p>
                     </div>
                 ))}
             </div>

@@ -19,7 +19,7 @@ interface User {
 
 const login = createAsyncThunk<User, { userName: string; password: string }>(
     'user/login',
-    async ({ userName, password },{ rejectWithValue }) => {
+    async ({ userName, password }, { rejectWithValue }) => {
         try {
             const response = await axios.post(`${apiUrl}/auth/login`, {
                 userName, password
@@ -34,6 +34,28 @@ const login = createAsyncThunk<User, { userName: string; password: string }>(
         }
     }
 );
+
+const restoreUser = createAsyncThunk<User, { token: string | undefined }>(
+    'user/restore',
+    async ({ token }, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(`${apiUrl}/user/me`, {
+                headers: {
+                    "x-auth-token": token,
+                  },
+            });
+            // console.log(response)
+            return response.data;
+        } catch (error) {
+            console.log(error)
+
+            if (error instanceof AxiosError) {
+                return rejectWithValue(error.response?.data?.message || 'Failed to restore user');
+            }
+            return rejectWithValue('An unknown error occurred');
+        }
+    }
+)
 
 interface SignupCredentials {
     firstName: string
@@ -63,4 +85,4 @@ const signup = createAsyncThunk<User, SignupCredentials>(
 
 )
 
-export { login, signup };
+export {restoreUser, login, signup };

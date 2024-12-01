@@ -1,0 +1,82 @@
+.orderSummaryContainer {
+  width: 300px;
+  height: 600px;
+  margin-left: 25px;
+  border-radius: 20px;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(35px); 
+  box-shadow: var(--box-shadow);
+  border: solid 1px var(--gray-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.summaryDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.summaryDetails > h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.summaryItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summaryRow,
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summaryRow > p {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0px;
+}
+
+.breakLine {
+  border-top: 1px solid black;
+  margin: 25px 0;
+
+}
+
+.totalRow > p,
+.totalRow > h3 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.checkoutButton {
+  width: 100%;
+  min-height: 51px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: medium;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+.checkoutButton:hover {
+  transform: scale(1.1);
+
+}

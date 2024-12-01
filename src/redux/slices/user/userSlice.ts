@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, signup } from './user.AsyncThunk';
+import { login, restoreUser, signup } from './user.AsyncThunk';
 import { setCookie } from 'cookies-next';
 
 interface User {
@@ -22,7 +22,14 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  user: null,
+  user: typeof window !== "undefined" && localStorage.getItem("user")
+    ? (() => {
+      const user = JSON.parse(localStorage.getItem("user") as string);
+      if (user?.token) {
+        setCookie("token", user.token, { maxAge: 60 * 60 * 24 });
+      }
+      return user;
+    })() : null,
   loading: 'idle',
   error: null,
 };
@@ -32,17 +39,33 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
+      console.log("log out")
       setCookie("token", "", { maxAge: -1 });
-      state.user = null; // Clear the user state on logout
+      localStorage.removeItem("user");
+      state.user = null;
       state.loading = 'idle';
       state.error = null;
     },
-    cleaner : (state) => {
+    cleaner: (state) => {
       state.error = null;
     }
   },
 
   extraReducers: (builder) => {
+    // restore user
+    builder.addCase(restoreUser.pending, (state) => {
+      state.loading = 'pending';
+    });
+    builder.addCase(restoreUser.fulfilled, (state) => {
+      state.loading = 'succeeded';
+    });
+    builder.addCase(restoreUser.rejected, (state, action) => {
+      state.loading = 'failed';
+      const errorMessage = typeof action.payload === 'string' ? action.payload : 'Failed to restore the user';
+      state.error = errorMessage || 'Failed to restore the user';
+    });
+
+    // login
     builder.addCase(login.pending, (state) => {
       state.loading = 'pending';
     });
@@ -52,12 +75,12 @@ const userSlice = createSlice({
 
       if (action.payload.token) {
         setCookie('token', action.payload.token, { maxAge: 60 * 60 * 24 });
+        localStorage.setItem("user", JSON.stringify(action.payload));
       }
     });
     builder.addCase(login.rejected, (state, action) => {
       state.loading = 'failed';
       const errorMessage = typeof action.payload === 'string' ? action.payload : 'Failed to login';
-
       state.error = errorMessage || 'Failed to login';
     });
 
@@ -76,9 +99,9 @@ const userSlice = createSlice({
     builder.addCase(signup.rejected, (state, action) => {
       state.loading = 'failed';
       const errorMessage = typeof action.payload === 'string' ? action.payload : 'Failed to signup';
-      state.error = errorMessage|| 'Failed to signup';
+      state.error = errorMessage || 'Failed to signup';
     });
   },
 });
-export const { logout ,cleaner} = userSlice.actions;
+export const { logout, cleaner } = userSlice.actions;
 export default userSlice.reducer;

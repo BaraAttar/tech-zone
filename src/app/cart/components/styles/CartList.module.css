@@ -1,0 +1,24 @@
+.cartCard {
+  width: 855px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(35px); 
+  padding: 25px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  border: solid 1px var(--gray-border);
+
+}
+
+.cartCard > h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+.cartList {
+  height: 501px;
+  overflow: scroll;
+}

@@ -1,6 +1,7 @@
 .main {
   max-width: 1200px;
   margin: auto;
+  padding: 0;
 }
 
 @media screen and (max-width: 1200px) {
@@ -9,7 +10,7 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   .main {
     max-width: 800px;
   }
